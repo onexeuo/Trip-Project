@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+           http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd">
+
+    <!-- Property placeholder configuration -->
+    <context:property-placeholder location="classpath:tot/props/db.properties"/>
+
+    <!-- Component scanning -->
+    <context:component-scan base-package="tot" />
+
+    <!-- DataSource configuration -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${db.driverClass}"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+    </bean>
+
+    <!-- MyBatis SqlSessionFactory configuration -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" />
+        <property name="typeAliasesPackage" value="tot.domain"/>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:tot/conf/mapper/PlannerMapper.xml</value>
+                <value>classpath:tot/conf/mapper/FestivalMapper.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- MyBatis SqlSessionTemplate configuration -->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory"/>
+    </bean>
+
+    <!-- MapperFactoryBean configuration -->
+    <bean id="festivalMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="tot.conf.mapper.FestivalMapper"/>
+        <property name="sqlSessionTemplate" ref="sqlSession"/>
+    </bean>
+
+    <!-- MapperScannerConfigurer for scanning mappers -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="tot.mapper"/>
+    </bean>
+
+    <!-- Additional beans -->
+    <bean id="festivalAPIService" class="tot.service.FestivalAPIService">
+        <constructor-arg ref="festivalInterface"/>
+        <constructor-arg ref="restTemplate"/>
+        <constructor-arg ref="gson"/>
+    </bean>
+    
+   	<bean id="HotelService" class="tot.service.HotelServiceImpl" />
+	
+	<bean id="PlannerService" class="tot.service.PlannerServiceImpl" />
+
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
+
+    <bean id="gson" class="com.google.gson.Gson"/>
+</beans>

@@ -1,0 +1,175 @@
+* {
+    list-style: none;
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* Center align the day containers */
+    margin-top: 50px;
+}
+
+.day-container{
+    flex: 1; 
+    margin: 0 20px; 
+    max-width: 45%; 
+    margin-top: 250px;
+}
+.datanav3{
+    width: 200px;
+}
+.pheader {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: -1000px;
+    left: 65px;
+    width:350px;
+    min-width:350px;
+}
+
+.datanav1 {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.timeline-container {
+    position: relative;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 1.5px;
+    height: 100%;
+    background-color: #cfcfcf;
+    z-index: -1;
+}
+
+.timeline-item {
+    display: flex;
+    position: relative;
+    margin-bottom: 50px;
+   
+}
+
+.number1 {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    line-height: 20px;
+    margin-right: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.time-content {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.asd123 {
+    display: flex;
+    margin-top: 10px;
+}
+
+.imgdiv1 {
+    margin-left: 20px;
+    width: 80px;
+    height: 100px;
+    border: 1px solid #333;
+    border-radius: 15px;
+}
+
+.pcolor {
+    color: #1FB1D9;
+}
+
+.endnumber {
+    margin-left: 5px;
+    margin-top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #cfcfcf;
+    color: white;
+    text-align: center;
+    line-height: 20px;
+    margin-right: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.time-date {
+    color: rgb(170, 177, 184);
+    display: flex;
+    align-items: center;
+}
+
+.pdate{
+    color: rgb(170, 177, 184);
+    margin-left: 40px;
+    font-size:20px;
+}
+
+.time-title, .date1 {
+    margin-right: 100px;
+    font-weight: 700;
+    color: rgb(15 23 42);
+}
+
+.butdiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.backbtn {
+    margin-right: 200px;
+    background-color: #cfcfcf;
+    color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #cfcfcf;
+    width: 170px;
+    height: 60px;
+    cursor:pointer;
+}
+
+.okbtn {
+    width: 170px;
+    height: 60px;
+    background-color: #1FB1D9;
+    color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #1FB1D9;
+    cursor:pointer;
+}
+
+.mbtn{
+    margin-left: 145px; 
+    font-size: 25px; 
+    color: #333;
+}
+
+.pbtn{
+    margin-left: 30px; 
+    font-size: 25px; 
+    color: #333;
+}
+
+#h2s{
+	display:flex;
+    align-items: center;
+	position:relatvie;
+	left:65px;
+	min-width:350px;
+}
+#h2s>*{
+	margin-right:10px;
+}
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD MyBatis Mapper 3.0//EN"
+  "classpath:mybatis-mapper-3.dtd">
+
+<mapper namespace="tot.mapper.FestivalInterface">
+    
+    <insert id="saveFestival" parameterType="tot.domain.Festival">
+        INSERT INTO festival_table (
+            contentid, contenttypeid, areacode, title, addr1, addr2, mapx, mapy,
+            firstimage, firstimage2, eventstartdate, eventenddate, overviewYN, tel
+        ) VALUES (
+            #{contentid}, #{contenttypeid}, #{areacode}, #{title}, #{addr1}, #{addr2}, #{mapx}, #{mapy},
+            #{firstimage}, #{firstimage2}, #{eventstartdate}, #{eventenddate}, #{overviewYN}, #{tel}
+        )
+    </insert>
+    
+</mapper>

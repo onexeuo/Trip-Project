@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tot.dao.CourseDao">
+
+	<select id="getCourse" resultType="tot.domain.CourseDTO">
+	    SELECT C.*
+	    FROM COURSE C
+	    JOIN TRIP  T ON C.TRIPID= T.TRIPID
+	    WHERE T.TRIPID = #{tripid}
+	    ORDER BY C.COURID ASC
+	</select>
+	
+	
+	<select id="getLodging" resultType="tot.domain.LodgingDTO">
+	    SELECT *
+	    FROM LODGING
+	    WHERE LODID = #{lodid}
+	</select>
+
+    <!-- Restaurant 조회 -->
+	<select id="getRestaurant" resultType="tot.domain.RestaurantDTO">
+	    SELECT *
+	    FROM RESTAURANT
+	    WHERE RESTID = #{restid}
+	</select>
+	
+    <!-- Tour 조회 -->
+	  <select id="getTour" resultType="tot.domain.TourDTO">
+	    SELECT *
+	    FROM TOUR
+	    WHERE TOID = #{toid}
+	</select>
+	
+</mapper>
