@@ -1,0 +1,636 @@
+/* 컨테이너 */
+.mainDiv {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 0;
+    box-sizing: border-box;
+}
+
+/* 여행 후기 제목 */
+.reviewTitleDiv {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.bigTitle {
+    font-size: 24px;
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+/* 여행 후기 소개글  */
+.reviewIntroDiv {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* review css */
+/* 여행 후기와 내 후기 선택 메뉴 */
+.menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+/* 여행 후기 검색 */
+.searchAndWriteDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.searchDiv {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.input {
+    width: 350px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 내 여행 후기 글쓰기 버튼 */
+.writeReviewDiv {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.writeReviewBtn {
+    background-color: #333;
+}
+
+/* 여행 후기 목록 리스트 */
+.reviewList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 20px;
+}
+
+.reviewItem {
+    flex: 1 1 calc(25% - 20px);
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: black;
+}
+
+.reviewItem:hover {
+    background-color: #f0f0f0; 
+    cursor: pointer;
+}
+
+.reviewItem img {
+    max-width: 100%;
+    height: auto;
+}
+
+.reviewItem .info {
+    padding: 10px;
+}
+
+.reviewItem .title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+.reviewItem .author {
+    font-size: 14px;
+    color: #555;
+}
+
+/* 별점 스타일 */
+.star {
+    font-size: 20px;
+    color: #ffc107;
+}
+
+/* 여행 후기 페이지 번호 */
+/* 네비게이션 컨테이너 */
+.paginationNav {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* 페이지 리스트 스타일 */
+.paginationList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    gap: 5px;
+}
+
+/* 각 페이지 항목 스타일 */
+.paginationItem {
+    display: inline;
+}
+
+/* 페이지 링크 스타일 */
+.paginationLink {
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #1fb1d9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    font-weight: bold;
+}
+
+/* 페이지 링크 호버 스타일 */
+.paginationLink:hover {
+    background-color: #f0f0f0;
+    border-color: #bbb;
+}
+
+/* 현재 페이지 스타일 */
+.paginationItem.active .paginationLink {
+    background-color: #1fb1d9;
+    color: #fff;
+    border-color: #1fb1d9;
+}
+
+/* 첫 번째 및 마지막 페이지 버튼 스타일 */
+.paginationItem a {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 페이지 버튼 간격 */
+.paginationList li + li {
+    margin-left: 5px;
+}
+
+/* reviewWrite css */
+/* 여행 후기 작섬 폼 */
+.reviewForm {
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.formGroup {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.formGroup label,
+.reviewContentDiv label {
+    width: 10%;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.titleInput {
+    width: 90% !important;
+}
+
+.treviewSelect {
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.ratingOptions {
+    padding: 10px;
+}
+
+.courseDetails {
+	width: 100%;
+	margin-left : 10px;
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+.reviewContent {
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid #ccc; /* 테두리 추가 */
+    padding: 0px;
+    font-size: x-large;
+    resize: none;
+    cursor: text;
+    background-color: #fff; /* 배경색 흰색으로 설정 */
+    color: #000;            /* 텍스트 색상 검정색으로 설정 */
+    outline: none;          /* 포커스 시 기본 외곽선 제거 */
+}
+
+.reviewContent:focus {
+    border-color: #007BFF; /* 포커스 시 테두리 색상 변경 */
+    outline: 1px solid #007BFF; /* 포커스 시 외곽선 색상 추가 */
+}
+
+.reviewContent::placeholder {
+    color: #aaa; /* 플레이스홀더 색상 */
+}
+
+.reviewContentAndImgDiv {
+    height: auto;
+    margin-left: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    min-height: 600px;
+}
+
+.reviewContentDiv img {
+    max-width: 300px;
+    max-height: 200px;
+    margin-right: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.reviewContentTextareaDiv {
+    height: 100%;
+}
+
+.reviewImageDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    margin-right: 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.file-input-wrapper {
+	margin-bottom: 5px;
+}
+
+input[type="file"] {
+	padding-bottom: 5px;
+}
+
+input[name="reviewImage"] {
+	border: 0px;
+}
+
+.termsFieldset {
+    width: 100%;
+}
+
+.submitAndCancleBtnDiv{
+	display: flex;
+	width: 100%;
+	justify-content: flex-end;
+}
+
+/* reviewDetail css */
+/* 여행 코스 후기 상세 내역 컨테이너  */
+.reviewCourseDiv {
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.reviewCourseImg {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.reviewCourseImg .initButton2 {
+    margin: 10px;
+}
+
+/* 여행 코스 후기 날짜별 내역 리스트  */
+.reviewCourseDayDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.courseDay {
+    margin-bottom: 10px;
+}
+
+.day {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.course {
+    font-size: 16px;
+    color: #cfcfcf;
+    margin-bottom: 10px;
+}
+
+/* 여행 코스 후기 상세 내역 리스트  */
+.reviewFuncDiv {
+	display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: flex-end;
+}
+
+.reviewFuncDiv a {
+	color: black;
+	text-decoration: none;
+}
+
+.reviewCourseDetailDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviewCourseDetailItem {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+.reviewCourseDetailItem img {
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.reviewCourseDetailItem .detailContent {
+    font-size: 16px;
+    color: #333;
+}
+
+#reviewListBtn {
+    margin-top: 100px;
+}
+
+/* 댓글 영역 스타일 */
+.commentsSection {
+    margin: 50px;
+    border-top: 2px solid #ddd;
+    padding-top: 20px;
+}
+
+.commentsSection h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.commentInputDiv {
+    display: flex;
+    padding: 20px 0px;
+    border-bottom: 1px solid #ddd;
+}
+
+#commentForm {
+    display: flex;
+    align-items: center;
+}
+
+.commentItem {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.commentDetailItem,
+.replyDetailItem {
+    display: flex;
+    align-items: center;
+}
+
+.profileImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.profileImg img {
+    width: 100%;
+    height: auto;
+}
+
+.commentMember,
+.replyMember {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.commentContent,
+.replyContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.commentText,
+.replyText {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+    flex: 1;
+}
+
+.commentDate,
+.replyDate {
+    font-size: 14px;
+    color: #888;
+    margin-left: auto;
+}
+
+.commentSetting,
+.replySetting {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.commentReply {
+    padding: 15px 0 10px 60px;
+    cursor: pointer;
+    color: #888;
+}
+
+.commentReplyForm {
+	display:flex;
+	align-items: center;
+	padding-left: 60px;
+	padding-bottom: 10px;
+}
+
+/* 신고 모달 설정 */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    max-width: 500px;
+    height: auto;
+    position: absolute; 
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+#reportReason {
+	width: 100%;
+    height: 150px; 
+    resize: vertical;
+    margin-bottom: 10px;
+}
+
+.reportButtonDiv {
+	display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 댓글 설정 */
+.commentOptionsMenu a {
+	color: black;
+}
+
+.showRepliesButton {
+	padding-top: 10px;
+	cursor: pointer;
+}
+
+.replyComments {
+	background-color: whitesmoke;
+}
+
+.nickname-highlight {
+    color: blue;
+}
+
+.replyInput {
+	background-color: whitesmoke;
+	border: 0 !important;
+	border-bottom: 1px solid black !important;
+	outline: none;
+}
+
+/* 반응형 css */
+@media (min-width: 1920px) {
+    .searchAndWriteDiv {
+        max-width: 1920px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .mainDiv {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .searchInput {
+        max-width: 300px;
+    }
+
+    .searchAndWriteDiv {
+        max-width: 100%;
+    }
+
+    .reviewItem {
+        flex: 1 1 calc(33.333% - 20px);
+    }
+}
+
+@media (max-width: 900px) {
+    .reviewItem {
+        flex: 1 1 calc(50% - 20px);
+    }
+
+    .searchInput {
+        max-width: 250px;
+    }
+
+    #commentContent {
+        max-width: 300px;
+    }
+
+    .profileImg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .commentsSection {
+        margin: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .reviewItem {
+        flex: 1 1 100%;
+    }
+
+    .searchInput {
+        max-width: 150px;
+    }
+
+    #commentContent {
+        max-width: 250px;
+    }
+
+    .profileImg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .commentsSection {
+        margin: 20px;
+    }
+
+    #commentForm button {
+        margin: 0;
+        margin-left: 3px;
+        padding: 3px;
+    }
+}

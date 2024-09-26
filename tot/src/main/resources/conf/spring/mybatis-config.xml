@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD MyBatis Configuration 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    
+    <properties resource="props/db.properties" />
+    
+    <settings>
+        <setting name="jdbcTypeForNull" value="VARCHAR"/>
+    </settings>  
+    
+    <typeAliases>
+    	<typeAlias alias="TripVO" type="tot.domain.TripVO"/>
+    	<typeAlias alias="TReviewVO" type="tot.domain.TReviewVO"/>
+    	<typeAlias alias="TReviewReqDTO" type="tot.domain.TReviewReqDTO"/>
+    	<typeAlias alias="TReviewResDTO" type="tot.domain.TReviewResDTO"/>
+    	<typeAlias alias="TReviewImageVO" type="tot.domain.TReviewImageVO"/>
+    	<typeAlias alias="CommentVO" type="tot.domain.CommentVO"/>
+    	<typeAlias alias="CommentReqDTO" type="tot.domain.CommentReqDTO"/>
+    	<typeAlias alias="CourseDTO" type="tot.domain.CourseDTO"/>
+    	<typeAlias alias="CourseResDTO" type="tot.domain.CourseResDTO"/>
+    	<typeAlias alias="TourVO" type="tot.domain.TourVO"/>
+    	<typeAlias alias="PageDTO" type="tot.common.page.PageDTO"/>
+    	<typeAlias alias="PageReqDTO" type="tot.common.page.PageReqDTO"/>
+    	<typeAlias alias="PageResDTO" type="tot.common.page.PageResDTO"/>
+    	<typeAlias alias="ReportVO" type="tot.domain.ReportVO"/>
+    	<typeAlias alias="ReportDTO" type="tot.domain.ReportDTO"/>
+    	<typeAlias alias="ReportCommentDTO" type="tot.domain.ReportCommentDTO"/>
+    	<typeAlias alias="ReportTReviewDTO" type="tot.domain.ReportTReviewDTO"/>
+    	<typeAlias alias="HistoryVO" type="tot.domain.HistoryVO"/>
+    	<typeAlias alias="Qna" type="tot.domain.Qna"/>
+    </typeAliases>
+    
+    <mappers>
+     	<mapper resource="conf/mapper/Course.xml"/>
+	    <mapper resource="conf/mapper/Trip.xml"/>
+	    <mapper resource="conf/mapper/FestivalMapper.xml"/>
+	    <mapper resource="conf/mapper/MemberMapper.xml"/>
+	    <mapper resource="conf/mapper/NoticeMapper.xml"/>
+	    <mapper resource="conf/mapper/MemBanHistory.xml"/>
+	    
+        <mapper resource="conf/mapper/TReviewMapper.xml"/>
+        <mapper resource="conf/mapper/CourseMapper.xml"/>
+        <mapper resource="conf/mapper/TourMapper.xml"/>
+        <mapper resource="conf/mapper/TripMapper.xml"/>
+        <mapper resource="conf/mapper/CommentMapper.xml"/>
+        <mapper resource="conf/mapper/HistoryMapper.xml"/>
+       	<mapper resource="conf/mapper/qnaMapper.xml"/>
+       	<mapper resource="conf/mapper/TendencyTestMapper.xml"/>
+        
+        <mapper resource="conf/mapper/AdminCommentMapper.xml"/>
+        <mapper resource="conf/mapper/AdminReportMapper.xml"/>
+        <mapper resource="conf/mapper/AdminTReviewMapper.xml"/>
+        
+    </mappers>
+    
+</configuration>
