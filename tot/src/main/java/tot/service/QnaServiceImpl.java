@@ -1,7 +1,6 @@
 package tot.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -11,8 +10,8 @@ import tot.common.page.PageDTO;
 import tot.common.page.PageReqDTO;
 import tot.common.page.PageResDTO;
 import tot.dao.QnaDao;
-import tot.domain.Member;
 import tot.domain.Qna;
+import tot.domain.QnaComment;
 import tot.exception.ServerException;
 
 @Service
@@ -73,6 +72,16 @@ public class QnaServiceImpl implements QnaService {
     @Override
     public List<Qna> findQnaListWithPagingByMemId(PageReqDTO dto, String memId) {
         return qnaDao.qnaListWithPagingByMemId(dto, memId);  // memId가 있는 경우
+    }
+    
+    @Override
+    public int insertQnaComment(QnaComment qnaComment) {
+        return qnaDao.insertQnaComment(qnaComment);
+    }
+    
+    @Override
+    public List<QnaComment> getCommentsByQnaId(int qnaId) {
+        return qnaDao.getCommentsByQnaId(qnaId);
     }
 	
 

@@ -15,6 +15,7 @@
     <title>여행 후기</title>
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
     <div class="mainDiv">
         <div class="reviewTitleDiv">
             <div class="bigTitle">여행 후기</div>
@@ -150,5 +151,6 @@
 		</nav>
 		<!-- 페이징 버튼 끝 -->
     </div>
+  	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

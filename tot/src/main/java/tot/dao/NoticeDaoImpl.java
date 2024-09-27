@@ -14,31 +14,31 @@ public class NoticeDaoImpl implements NoticeDao {
 	@Autowired
 	SqlSession sqlSession;
 	
-	private static final String NAMESPACE = "NoticeDao";
+	private static final String NAMESPACE = "tot.dao.NoticeDao";
 
 	@Override
 	public List<Notice> noticeList() throws Exception {
-	    return sqlSession.selectList("NoticeDao.NoticeList");
+	    return sqlSession.selectList("tot.dao.NoticeDao.NoticeList");
 	}
 	
     @Override
     public Notice getNoticeById(int noid) throws Exception {
-        return sqlSession.selectOne("NoticeDao.getNoticeById", noid);
+        return sqlSession.selectOne("tot.dao.NoticeDao.getNoticeById", noid);
     }
     
     @Override
     public void insertNotice(Notice notice) throws Exception {
-        sqlSession.insert("NoticeDao.insertNotice", notice); // MyBatis 쿼리 호출
+        sqlSession.insert("tot.dao.NoticeDao.insertNotice", notice); // MyBatis 쿼리 호출
     }
     
     @Override
     public int deleteNotice(int noid) throws Exception {
-    	 return sqlSession.delete("NoticeDao.deleteNotice", noid);
+    	 return sqlSession.delete("tot.dao.NoticeDao.deleteNotice", noid);
     }
     
     @Override
     public void updateNotice(Notice notice) throws Exception {
-        sqlSession.update("NoticeDao.updateNotice", notice);
+        sqlSession.update("tot.dao.NoticeDao.updateNotice", notice);
     }
     
     

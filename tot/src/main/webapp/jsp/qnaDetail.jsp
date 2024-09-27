@@ -31,7 +31,6 @@
         </div>
         <div class="buttons">
             <button type="button" class="toListBtn" >목록으로</button>
-            </button>
         </div>
     </section>
 </body>

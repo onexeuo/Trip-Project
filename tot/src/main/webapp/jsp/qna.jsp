@@ -17,7 +17,6 @@
     
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
 <%
 	session.getAttribute("member"); 
 %>
@@ -74,6 +73,5 @@
           </div>          
       </div>
     </div>
-   	<jsp:include page="footer.jsp"></jsp:include>
   </body>
 </html>

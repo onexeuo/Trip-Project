@@ -9,21 +9,20 @@
     <title>Trick or Trip</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/global.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login.css"/>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="${pageContext.request.contextPath}/static/js/login.js"></script>
+    
     <!-- 닉네임 입력 모달창 스크립트 -->
-	<script type="text/javascript">
-	    function showModal() {
-	        document.getElementById('nicknameModal').style.display = 'block';
-	    }
-	
-	    function closeModal() {
-	        document.getElementById('nicknameModal').style.display = 'none';
-	    }
-	
-	    window.onload = function() {
-	        
-	        // 서버에서 전달된 loginSuccess 값이 제대로 전달됐는지 콘솔에 출력
+   <script type="text/javascript">
+       function showModal() {
+           document.getElementById('nicknameModal').style.display = 'block';
+       }
+   
+       function closeModal() {
+           document.getElementById('nicknameModal').style.display = 'none';
+       }
+   
+       window.onload = function() {
+           
+           // 서버에서 전달된 loginSuccess 값이 제대로 전달됐는지 콘솔에 출력
             var loginSuccess = '<%= request.getAttribute("loginSuccess") %>';
 
             // loginSuccess가 true이면 모달창을 띄움
@@ -31,10 +30,10 @@
                 showModal();
             }
         };
-	</script>
+   </script>
 </head>
 <body>
-  	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
     <main>
         <div id="loginWrapper">
             <div id="loginCenter">
@@ -55,20 +54,21 @@
             </div>
         </div>
         <!-- 닉네임 입력 모달창 -->
-        <div id="nicknameModalOverlay"></div>
-		<div id="nicknameModal" class="modal">
-		    <div class="modal-content">
-		        <span class="close" onclick="closeModal()">&times;</span>
-		        <h3>닉네임을 입력하세요</h3>
+        <div id="nicknameModal" class="modal">
+            <div class="modal-content">
+                <h3>닉네임을 입력하세요</h3>
                 
-        <!-- 닉네임 입력 필드 및 에러 메시지 -->
-        <form action="${pageContext.request.contextPath}/saveNickname" method="post">
-            <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력하세요" required>
-            <c:if test="${not empty errorMessage}">
-                <p style="color:red;">${errorMessage}</p>
-            </c:if>
-            <button type="submit">저장</button>
-        </form>
+                                <!-- 에러 메시지 출력 부분 -->
+                <c:if test="${not empty errorMessage}">
+                    <p style="color:red;">${errorMessage}</p>
+                </c:if>
+                
+                <form action="${pageContext.request.contextPath}/saveNickname" method="post">
+                    <label for="nickname">닉네임:</label>
+                    <input type="text" id="nickname" name="nickname" required>
+                    <button type="submit">저장</button>
+                    <button type="button" onclick="closeModal()">닫기</button>
+                </form>
             </div>
         </div>
     </main>

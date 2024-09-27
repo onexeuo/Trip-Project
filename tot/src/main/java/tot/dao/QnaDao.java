@@ -1,14 +1,11 @@
 package tot.dao;
 
 import java.util.List;
-import java.util.Map;
-
-import org.springframework.stereotype.Repository;
 
 import tot.common.page.PageDTO;
 import tot.common.page.PageReqDTO;
-import tot.domain.Member;
 import tot.domain.Qna;
+import tot.domain.QnaComment;
 
 public interface QnaDao {
 	List<Qna> qnaList();
@@ -26,6 +23,10 @@ public interface QnaDao {
     int selectQnaTotalCount(PageDTO pageDTO);
     
     public List<Qna> getMyQnaList(String memId);
+    
+    public int insertQnaComment(QnaComment qnaComment);
+    
+    List<QnaComment> getCommentsByQnaId(int qnaId);    
 	
 //	public abstract Member getMemberId(int MEMID);
 }

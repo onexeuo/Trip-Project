@@ -15,8 +15,9 @@
     </script>
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
     <div class="container">
-        <h1>저장된 여행 목록</h1>
+        <h1 id="tripH1">저장된 여행 목록</h1>
         <div id="trip-list-container">
             <!-- 여행 리스트가 동적으로 추가될 공간 -->
         </div>
@@ -24,5 +25,6 @@
             <button class="backbtn">메인으로</button>
         </div>
     </div>
+   	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -1,14 +1,15 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <title>Trick or Trip</title>
-    <link rel="stylesheet" href="../static/css/global.css" />
-    <link rel="stylesheet" href="../static/css/noticeDetail.css" />
+    <title>공지사항 상세보기</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/global.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/noticeDetail.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="../static/js/noticeDetail.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/noticeDetail.js"></script>
 </head>
 <body>
     <section class="container">   
@@ -16,25 +17,25 @@
         <div class="fromHeaderParent">
             <div class="fromHeader">
                 <div class="row1">
-                    <div class="row1Text1">detail</div>
+                    <div class="row1Text1">공지사항</div>
                 </div>
                 <div class="instruction"></div>
             </div>
 
             <div class="row2">
-                <div class="qnaTitle">
+                <div class="noticeTitle">
                     <b>제목</b>
-                    <p>악플 선처 없음</p>
+                    <p>${notice.notitle}</p> <!-- 공지사항 제목을 표시할 부분 -->
                 </div>
-                <div class="qnaTitleContent">
+                <div class="noticeTitleContent">
                     <b>내용</b>
-                    <p>무분별한 악플로 고생하는 분들이 많아지고 있습니다. 계속 악플테러시 선처없이 고소 진행하겠습니다.</p>
+                    <p>${notice.notext}</p> <!-- 공지사항 내용을 표시할 부분 -->
                 </div>
             </div>
         </div>  
         <div class="buttons">
-            <button type="button" class="toListBtn" >목록으로</button>
-            </button>
+            <button type="button" class="toListBtn" onclick="location.href='${pageContext.request.contextPath}/api/notices'">목록으로</button>
+            
         </div>
     </section>
 </body>

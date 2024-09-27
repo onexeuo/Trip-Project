@@ -3,12 +3,12 @@
     width:100%;
     height: 300px;
     background-color: #5E5E5E;
-    margin-top:40px;
-
+    margin-top:50px;
+    z-index:10;
 }
 
 #footer #footerWrapper{
-    width:1200px;
+    width:80%;
     margin:0 auto;
 }
 

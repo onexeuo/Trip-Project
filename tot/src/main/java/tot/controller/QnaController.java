@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tot.common.enums.SearchType;
 import tot.common.page.PageReqDTO;
 import tot.common.page.PageResDTO;
-import tot.domain.Member;
+import tot.domain.MemberVO;
 import tot.domain.Qna;
 import tot.service.QnaService;
 
@@ -91,7 +91,7 @@ public class QnaController {
     @RequestMapping(value = "insertQna", method = RequestMethod.POST)
 	public String insertQna(@RequestBody Qna qna, HttpSession session) {
     	// 세션에서 member 객체 가져오기
-    	Member member = (Member) session.getAttribute("member");
+    	MemberVO member = (MemberVO) session.getAttribute("member");
     	
         if (member == null) {
             throw new IllegalArgumentException("Member must be logged in.");
@@ -138,14 +138,13 @@ public class QnaController {
 	@GetMapping("/myQna")
 	public ResponseEntity<?> getMyQnaList(HttpSession session) {
 	    // 세션에서 memId 가져오기
-	    Member member = (Member) session.getAttribute("member");
+		MemberVO member = (MemberVO) session.getAttribute("member");
 	    if (member == null) {
 	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
 	            .body("로그인 후 이용할 수 있습니다.");
 	    }
 
 	    String memId = member.getMemId();
-	    
 	    if (memId == null || memId.isEmpty()) {
 	        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 	            .body("잘못된 요청입니다.");

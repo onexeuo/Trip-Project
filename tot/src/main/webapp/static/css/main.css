@@ -3,7 +3,7 @@
 #main{
     width:100%;
     margin:0 auto;
-	height:4000px;
+	height:3000px;
 }
 
 #main #main1{
@@ -60,7 +60,7 @@
 	width:80%;
 	height:600px;
 	/*background: linear-gradient(to right, #ECFBFF, #1FB1D9);*/
-    background: url(../image/airplane.jpg) no-repeat center/cover ;
+    background: url(../image/airplane.jpg) no-repeat center/cover;
     margin:50px auto;
     box-sizing:border-box;
     position:relative;
@@ -93,6 +93,7 @@
 #main #main3{
 	width:75%;
 	margin:150px auto 100px;
+    overflow:auto;
 	/*background: linear-gradient(to bottom, #ECFBFF, #1FB1D9);*/
 }
 #main #main3 h2{
@@ -128,6 +129,7 @@
 	width:100%;
 	max-width:100%;
 	height:auto;
+	max-height:800px;
     justify-content: flex-end;
 }
 
@@ -143,13 +145,64 @@
 
 
 
+/* 모달 배경 - 전체 화면을 덮도록 설정 */
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed; /* 화면에 고정 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 어두운 반투명 배경 */
+}
 
+/* 모달 내용 */
+#testModal .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 화면 중앙에 오도록 설정 */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 480px; /* 모달의 너비 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
 
+#testModal .modal-content h2{
+	margin-bottom:10px;
+}
+/* 닫기 버튼 (X) */
+#testModal .close {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
 
+#testModal .close:hover {
+    color: red; /* 호버 시 색상 변화 */
+}
 
+/* 버튼 스타일 */
+#testModal button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-
-
+#testModal button:hover {
+    background-color: #45a049;
+}
 
 
 @media (max-width: 768px) {

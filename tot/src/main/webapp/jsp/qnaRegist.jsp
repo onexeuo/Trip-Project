@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="tot.domain.MemberVO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +13,21 @@
 </head>
 <body>    
 <%
-	session.setAttribute("memid", "M01"); 
+    // 세션에서 member 객체 가져오기
+    MemberVO member = (MemberVO) session.getAttribute("member");
+    String memId = member != null ? member.getMemId() : "";
+    String memNick = member != null ? member.getMemNick() : "";
 %>
+
+<script>
+    // JavaScript에서 사용할 변수로 세션 값 할당
+    const memId = '<%= member.getMemId() %>';
+    const memNick = '<%= member.getMemNick() %>';
+</script>
+
+<p>안녕하세요, ${member.memNick}님!</p>
+<p>안녕하세요, ${member.memId}님!</p>
+
 	<input type="hidden" name="memid"/>
     <section class="container">   
         <h2 class="row1Text">Q & A</h2> 

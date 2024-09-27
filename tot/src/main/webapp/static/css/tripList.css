@@ -1,20 +1,18 @@
 @charset "UTF-8";
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-}
+
 
 .container {
+	width:80%;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 150px auto;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+#tripH1 {
     text-align: center;
     color: #333;
 }
@@ -65,7 +63,7 @@ h1 {
 
 .backbtn {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #1FB1D9;
     color: white;
     border: none;
     border-radius: 4px;
@@ -74,5 +72,5 @@ h1 {
 }
 
 .backbtn:hover {
-    background-color: #0056b3;
+    background-color: rgb(0, 52, 111);
 }

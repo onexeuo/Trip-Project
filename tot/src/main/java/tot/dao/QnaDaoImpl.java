@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import tot.common.page.PageDTO;
 import tot.common.page.PageReqDTO;
-import tot.domain.Member;
 import tot.domain.Qna;
+import tot.domain.QnaComment;
 
 @Repository
 public class QnaDaoImpl implements QnaDao {
@@ -73,6 +73,16 @@ public class QnaDaoImpl implements QnaDao {
     public List<Qna> getMyQnaList(String memId) {
         return sqlSession.selectList("tot.dao.QnaDao.getMyQnaList", memId);
     }
+    
+    @Override
+    public int insertQnaComment(QnaComment qnaComment) {
+        return sqlSession.insert("tot.admin.dao.AdminQnaDao.insertQnaComment", qnaComment);
+    }
+    
+    @Override
+    public List<QnaComment> getCommentsByQnaId(int qnaId) {
+        return sqlSession.selectList("tot.dao.QnaDao.getCommentsByQnaId", qnaId);
+    }  
 
 //	@Override
 //	public Member getMemberId(int MEMID) {

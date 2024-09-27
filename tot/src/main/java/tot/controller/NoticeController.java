@@ -13,6 +13,8 @@ import tot.common.page.PageResDTO;
 import tot.domain.Notice;
 import tot.service.NoticeService;
 
+import javax.inject.Inject;
+
 import java.util.List;
 
 @CrossOrigin(origins="*")

@@ -6,6 +6,7 @@ import java.util.Map;
 import tot.common.page.PageReqDTO;
 import tot.common.page.PageResDTO;
 import tot.domain.Qna;
+import tot.domain.QnaComment;
 
 public interface QnaService {
 	
@@ -23,7 +24,11 @@ public interface QnaService {
 	
 	List<Qna> findQnaListWithPagingByMemId(PageReqDTO dto, String memId);  // 추가된 메소드
 	
-	List<Qna> findMyQnaList(String memId);	
+	List<Qna> findMyQnaList(String memId);
+	
+	public abstract int insertQnaComment(QnaComment qnaComment);
+	
+	List<QnaComment> getCommentsByQnaId(int qnaId);
 	
 //	public abstract Member getMemberId(int MEMID);
 

@@ -1,30 +1,29 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trick or Trip</title>
-    <link rel="stylesheet" href="../static/css/global.css"/>
-    <link rel="stylesheet" href="../static/css/footer.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/global.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/footer.css"/>
 </head>
 <body>
     <footer id="footer">
         <div id="footerWrapper">
             <div id="footerCenterTop">
                 <ul>
-                    <li><a href="#">ê´‘ê³ ë¬¸ì˜ í™˜ì˜</a></li>
+                    <li><a href="#">±¤°í¹®ÀÇ È¯¿µ</a></li>
                     <li>|</li>
-                    <li><a href="#">ìŠ¤í°ì„œë¬¸ì˜ í™˜ì˜</a></li>
+                    <li><a href="#">¼­ºñ½º¹®ÀÇ È¯¿µ</a></li>
                     <li>|</li>
-                    <li><a href="#">ìŠ¤ì¹´ì›ƒì œì˜ í™˜ì˜</a></li>
-                    <li>|</li>
-                    <li><a href="#">ì¸í„°ë·°ë¬¸ì˜ í™˜ì˜</a></li>
+                    <li><a href="#">½ºÄ«¿ô¹®ÀÇ È¯¿µ</a></li>
                 </ul>
             </div>
             <div id="footerCenterBottom">
-                <p>ë‚˜ì˜ ì„±í–¥ì— ë”°ë¼ ë– ë‚˜ëŠ” ì—¬í–‰ê°€ì´ë“œ</p>
-                <img src="../static/image/footer_logo.png"/>
+                <p>³ªÀÇ ¼ºÇâ¿¡ µû¶ó ¶°³ª´Â ¿©Çà°¡ÀÌµå</p>
+                <img src="${pageContext.request.contextPath}/static/image/footer_logo.png"/>
             </div>
         </div>
     </footer>

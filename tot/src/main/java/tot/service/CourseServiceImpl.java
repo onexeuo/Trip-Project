@@ -1,6 +1,7 @@
 package tot.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,10 +9,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-import tot.dao.CourseDAO;
+import tot.dao.CourseDao;
 import tot.domain.CourseDTO;
 import tot.domain.CourseResDTO;
 import tot.domain.LodgingDTO;
@@ -22,7 +22,7 @@ import tot.domain.TourDTO;
 public class CourseServiceImpl implements CourseService{
 
     @Autowired
-    private CourseDAO courseDao;
+    private CourseDao courseDao;
 
     @Override
     public Map<Integer, List<Object>> getDailyCourseByTripId(int tripId) {
@@ -96,22 +96,33 @@ public class CourseServiceImpl implements CourseService{
 		return courseDao.getCourseById(courseId);
 	}
 
-	@Override
-	public List<CourseDTO> getCourseDetailsByTripId(int tripId) {
-		List<CourseDTO> courseList = courseDao.getCourseByTripId(tripId);
-		for (CourseDTO course : courseList) {
-			List<CourseResDTO> courseDetails = new ArrayList<>();
-			String[] courseTypes = course.getDcourse().split(",");
-			for (String courseType : courseTypes) {
-				String[] typeAndId = courseType.split(":");
-				CourseResDTO courseDetail = courseDao.getCourseDetailsById(typeAndId[0],
-						Integer.parseInt(typeAndId[1]));
-				courseDetails.add(courseDetail);
-			}
-			course.setCourseDetail(courseDetails);
-		}
+    @Override
+    public List<CourseDTO> getCourseDetailsByTripId(int tripId) {
+        List<CourseDTO> courseList = courseDao.getCourseByTripId(tripId);
+        for (CourseDTO course : courseList) {
+            List<CourseResDTO> courseDetails = new ArrayList<>();
+            String[] courseTypes = course.getDcourse().split(",");
 
-		return courseList;
-	}
+            // 로그 추가: courseTypes 출력
+            System.out.println("Course Types: " + Arrays.toString(courseTypes));
+
+            for (String courseType : courseTypes) {
+                String[] typeAndId = courseType.split(":");
+                // 로그 추가: typeAndId 출력
+                System.out.println("Type and ID: " + Arrays.toString(typeAndId));
+
+                // 로그 추가: 메서드 호출 전 확인
+                System.out.println("Calling getCourseDetailsById with type: " + typeAndId[0] + ", id: " + Integer.parseInt(typeAndId[1]));
+
+                CourseResDTO courseDetail = courseDao.getCourseDetailsById(typeAndId[0],
+                        Integer.parseInt(typeAndId[1]));
+                courseDetails.add(courseDetail);
+            }
+            course.setCourseDetail(courseDetails);
+        }
+        System.out.println(courseList);
+        return courseList;
+    }
+
 
 }
