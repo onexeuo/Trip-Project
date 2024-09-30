@@ -1,22 +1,20 @@
 package tot.domain;
 
 public class LodgingDTO {
-	private int lodId;                // 숙소 아이디
-	private String lg001;             // 코드 (LG_001)
-	private String areacode;          // 지역코드
-	private String lodName;           // 숙소 이름
-	private String lodAddress;        // 숙소 주소
-	private String lodUrl;            // 숙소 URL
-	private String lodPrice;          // 숙소 가격
-	private String lodImgPath;        // 숙소 이미지 경로
-	
+	private int lodId; // 숙소 아이디
+	private String lg001; // 코드 (LG_001)
+	private String areacode; // 지역코드
+	private String lodName; // 숙소 이름
+	private String lodAddress; // 숙소 주소
+	private String lodUrl; // 숙소 URL
+	private String lodPrice; // 숙소 가격
+	private String lodImgPath; // 숙소 이미지 경로
+
 	public LodgingDTO() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public LodgingDTO(int lodId, String lg001, String areacode, String lodName, String lodAddress, String lodUrl,
 			String lodPrice, String lodImgPath) {
-		super();
 		this.lodId = lodId;
 		this.lg001 = lg001;
 		this.areacode = areacode;
@@ -97,8 +95,5 @@ public class LodgingDTO {
 				+ ", lodAddress=" + lodAddress + ", lodUrl=" + lodUrl + ", lodPrice=" + lodPrice + ", lodImgPath="
 				+ lodImgPath + "]";
 	}
-	
-	
-	
-	
+
 }

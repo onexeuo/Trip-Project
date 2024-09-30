@@ -1,4 +1,8 @@
 $(document).ready(function() {
+
+
+
+
     // 날짜 필드 초기화
     const $startDate = $('#trstadate');
     const $endDate = $('#trenddate');

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tot.dao.CourseDao">
+
+	<select id="getCourse" parameterType="int" resultType="CourseDTO">
+	    SELECT C.*
+	    FROM COURSE C
+	    JOIN TRIP  T ON C.TRIPID= T.TRIPID
+	    WHERE T.TRIPID = #{tripId}
+	    ORDER BY C.COURID ASC
+	</select>
+	
+	<select id="getLodging" resultType="LodgingDTO">
+	    SELECT *
+	    FROM LODGING
+	    WHERE LODID = #{lodId}
+	</select>
+
+	<select id="getRestaurant" resultType="RestaurantDTO">
+	    SELECT *
+	    FROM RESTAURANT
+	    WHERE RESTID = #{restId}
+	</select>
+	
+	  <select id="getTour" resultType="TourDTO">
+	    SELECT *
+	    FROM TOUR
+	    WHERE TOID = #{toId}
+	</select>
+	
+	<select id="selectHotel" parameterType="String" resultType="LodgingDTO">
+		select * from LODGING
+		where areacode = #{areacode}
+	</select>
+	
+	<select id="selectRestaurant" parameterType="String" resultType="RestaurantDTO" >
+		select * from Restaurant
+		where areacode = #{areacode}
+	</select>
+	
+	<select id="selectTour" parameterType="String" resultType="TourDTO">
+		select * from Tour
+		where areacode = #{areacode}
+	</select>
+	
+	<update id="updateDcourse" parameterType="map">
+        UPDATE course
+        SET dcourse = #{dcourse}
+        WHERE tripId = #{tripId}
+        AND courId = #{courId}
+    </update>
+	
+	<select id="getCourseById" parameterType="String" resultType="CourseDTO">
+        SELECT * FROM COURSE WHERE COURID = #{courseId}
+    </select>
+
+	<select id="getCourseByTripId" parameterType="int" resultMap="CourseDTOMap">
+		SELECT 
+		    C.COURID, 
+		    C.TRIPID, 
+		    C.AREACODE, 
+		    C.DCOURSE, 
+		    C.COURREGDATE, 
+		    C.COURUPDATE,
+		    C1.CODENAME as regionName,
+		    C2.CODENAME as regionImageUrl 
+		FROM
+			COURSE C
+		   LEFT JOIN CODE c1 ON c.AREACODE = c1.CODEID AND c1.PCODEID = 'areacode'
+		   LEFT JOIN CODE c2 ON c2.CODEID = CONCAT('areaImg', c.AREACODE)
+		JOIN 
+		    TRIP T ON C.TRIPID = T.TRIPID
+		WHERE 
+		    T.TRIPID = #{tripId}
+	</select>
+	
+	<select id="getCourseDetailsById" parameterType="map" resultType="CourseResDTO">
+	    <choose>
+	        <when test="dcourseType == 'TOID'">
+	            SELECT t.TONAME AS dname, t.TOADDRESS AS daddress
+	            FROM TOUR t
+	            WHERE t.toid = #{dcourseId}
+	        </when>
+	        <when test="dcourseType == 'RESTID'">
+	            SELECT r.RESTNAME AS dname, r.RESTADDRESS AS daddress
+	            FROM RESTAURANT r
+	            WHERE r.restid = #{dcourseId}
+	        </when>
+	        <when test="dcourseType == 'LODID'">
+	            SELECT l.LODNAME AS dname, l.LODADDRESS AS daddress
+	            FROM LODGING l
+	            WHERE l.lodid = #{dcourseId}
+	        </when>
+	        <otherwise>
+	            SELECT NULL AS dname, NULL AS daddress FROM DUAL
+	        </otherwise>
+   		</choose>
+	</select>
+	
+	<resultMap id="CourseDTOMap" type="CourseDTO">
+	    <id property="courId" column="COURID" />
+	    <result property="tripId" column="TRIPID" />
+	    <result property="areaCode" column="AREACODE" />
+	    <result property="dCourse" column="DCOURSE" />
+	    <result property="courRegdate" column="COURREGDATE" />
+	    <result property="courUpdate" column="COURUPDATE" />
+	    <result property="regionName" column="REGIONNAME" />
+	    <result property="regionImageUrl" column="REGIONIMAGEURL" />
+	</resultMap>
+</mapper>

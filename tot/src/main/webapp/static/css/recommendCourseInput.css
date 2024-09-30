@@ -18,6 +18,9 @@ body {
     flex-direction: column; /* 수직 방향으로 정렬 */
     min-width: 600px;
 }
+#wrapper{
+	margin:150px auto;
+}
 
 /* 제목 스타일 */
 h2 {

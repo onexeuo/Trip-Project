@@ -7,9 +7,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class RecommendCourseInputController {
 
-	    @GetMapping("/recommendCourseInput")
-	    public ModelAndView showRecommendationForm() {
-	        return new ModelAndView("recommendCourseInput"); 
-	    }
+	@GetMapping("/recommendCourseInput")
+	public ModelAndView showRecommendationForm() {
+		return new ModelAndView("recommendCourseInput");
+	}
 
 }

@@ -1,18 +1,20 @@
 @charset "UTF-8";
 
-
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
 
 .container {
-	width:80%;
     max-width: 800px;
-    margin: 150px auto;
+    margin: 180px auto 130px;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#tripH1 {
+.tripH1 {
     text-align: center;
     color: #333;
 }
@@ -63,7 +65,7 @@
 
 .backbtn {
     padding: 10px 20px;
-    background-color: #1FB1D9;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
@@ -72,5 +74,5 @@
 }
 
 .backbtn:hover {
-    background-color: rgb(0, 52, 111);
+    background-color: #0056b3;
 }

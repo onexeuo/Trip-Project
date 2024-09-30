@@ -22,7 +22,7 @@ $(document).ready(function() {
 
         // AJAX 요청으로 닉네임 변경 처리
         $.ajax({
-            url: contextPath + '/api/members/changeNickname',  // 닉네임 변경 요청 URL
+            url: '/tot/member/changeNickname',  // 닉네임 변경 요청 URL
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ newNickname: newNickname }),  // 입력된 닉네임을 서버로 전송
@@ -39,7 +39,5 @@ $(document).ready(function() {
             }
         });
     });
-    
-    
     
 });

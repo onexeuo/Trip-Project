@@ -1,80 +1,80 @@
 package tot.domain;
 
 public class RecommandCourseInputDTO {
-    private String mbti;
-    private String tramt;
-    private String trpeople;
-    private String trstadate;
-    private String trenddate;
-    private String trperiod;
-    private String areacode;
-    private String restaurant_001;
-    private String resultType;
 
-    // Getters and Setters
-    public String getMbti() {
-        return mbti;
-    }
+	private String mbti;
+	private String tramt;
+	private String trpeople;
+	private String trstadate;
+	private String trenddate;
+	private String trperiod;
+	private String areacode;
+	private String restaurant_001;
+	private String resultType;
 
-    public void setMbti(String mbti) {
-        this.mbti = mbti;
-    }
+	public String getMbti() {
+		return mbti;
+	}
 
-    public String getTramt() {
-        return tramt;
-    }
+	public void setMbti(String mbti) {
+		this.mbti = mbti;
+	}
 
-    public void setTramt(String tramt) {
-        this.tramt = tramt;
-    }
+	public String getTramt() {
+		return tramt;
+	}
 
-    public String getTrpeople() {
-        return trpeople;
-    }
+	public void setTramt(String tramt) {
+		this.tramt = tramt;
+	}
 
-    public void setTrpeople(String trpeople) {
-        this.trpeople = trpeople;
-    }
+	public String getTrpeople() {
+		return trpeople;
+	}
 
-    public String getTrstadate() {
-        return trstadate;
-    }
+	public void setTrpeople(String trpeople) {
+		this.trpeople = trpeople;
+	}
 
-    public void setTrstadate(String trstadate) {
-        this.trstadate = trstadate;
-    }
+	public String getTrstadate() {
+		return trstadate;
+	}
 
-    public String getTrenddate() {
-        return trenddate;
-    }
+	public void setTrstadate(String trstadate) {
+		this.trstadate = trstadate;
+	}
 
-    public void setTrenddate(String trenddate) {
-        this.trenddate = trenddate;
-    }
+	public String getTrenddate() {
+		return trenddate;
+	}
 
-    public String getAreacode() {
-        return areacode;
-    }
+	public void setTrenddate(String trenddate) {
+		this.trenddate = trenddate;
+	}
 
-    public void setAreacode(String areacode) {
-        this.areacode = areacode;
-    }
+	public String getAreacode() {
+		return areacode;
+	}
 
-    public String getRestaurant_001() {
-        return restaurant_001;
-    }
+	public void setAreacode(String areacode) {
+		this.areacode = areacode;
+	}
 
-    public void setRestaurant_001(String restaurant_001) {
-        this.restaurant_001 = restaurant_001;
-    }
+	public String getRestaurant_001() {
+		return restaurant_001;
+	}
 
-    public String getResultType() {
-        return resultType;
-    }
+	public void setRestaurant_001(String restaurant_001) {
+		this.restaurant_001 = restaurant_001;
+	}
 
-    public void setResultType(String resultType) {
-        this.resultType = resultType;
-    }
+	public String getResultType() {
+		return resultType;
+	}
+
+	public void setResultType(String resultType) {
+		this.resultType = resultType;
+	}
 
 	public String getTrperiod() {
 		return trperiod;
@@ -83,6 +83,5 @@ public class RecommandCourseInputDTO {
 	public void setTrperiod(String trperiod) {
 		this.trperiod = trperiod;
 	}
-    
-    
+
 }

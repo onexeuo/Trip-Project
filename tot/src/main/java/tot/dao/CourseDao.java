@@ -11,11 +11,27 @@ import tot.domain.RestaurantDTO;
 import tot.domain.TourDTO;
 
 public interface CourseDao {
-	public abstract TourDTO getTour(String toId);
-	public abstract RestaurantDTO getRestaurant(int restId);
-	public abstract LodgingDTO getLodging(int lodId);
-	public abstract List<CourseDTO> getCourse(int tripId);  
-	public abstract CourseDTO getCourseById(String courseId);
-	public abstract List<CourseDTO> getCourseByTripId(int tripId);
-	public abstract CourseResDTO getCourseDetailsById(@Param("dcourseType") String dcourseType, @Param("dcourseId") int dcourseId);
+
+	TourDTO getTour(String toId);
+
+	RestaurantDTO getRestaurant(int restId);
+
+	LodgingDTO getLodging(int lodId);
+
+	List<CourseDTO> getCourse(int tripId);
+
+	CourseDTO getCourseById(String courseId);
+
+	List<CourseDTO> getCourseByTripId(int tripId);
+
+	CourseResDTO getCourseDetailsById(@Param("dcourseType") String dcourseType, @Param("dcourseId") int dcourseId);
+
+	List<LodgingDTO> selectHotel(String areacode) throws Exception;
+
+	List<RestaurantDTO> selectRestaurant(String areacode) throws Exception;
+
+	List<TourDTO> selectTour(String areacode) throws Exception;
+
+	void updateDcourse(@Param("courId") Integer courId, @Param("dcourse") String dcourse, @Param("tripId") Long tripId);
+
 }

@@ -1,55 +1,56 @@
 package tot.admin.dao;
 
 import java.util.List;
-import javax.inject.Inject;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import tot.common.page.PageDTO;
-import tot.domain.Notice;
+import tot.domain.NoticeVO;
 
 @Repository
 public class AdminNoticeDaoImpl implements AdminNoticeDao {
-	
-	@Inject
-	SqlSession sqlSession;
-	
-	private static final String NAMESPACE = "NoticeDao";
+
+	private static final String NAMESPACE = "tot.admin.dao.AdminNoticeDao";
+	private final SqlSession sqlSession;
+
+	public AdminNoticeDaoImpl(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
 
 	@Override
-	public List<Notice> noticeList() throws Exception {
-	    return sqlSession.selectList("NoticeDao.NoticeList");
+	public List<NoticeVO> noticeList() {
+		return sqlSession.selectList("NoticeDao.NoticeList");
 	}
-	
-    @Override
-    public Notice getNoticeById(int noid) throws Exception {
-        return sqlSession.selectOne("NoticeDao.getNoticeById", noid);
-    }
-    
-    @Override
-    public void insertNotice(Notice notice) throws Exception {
-        sqlSession.insert("NoticeDao.insertNotice", notice); // MyBatis 쿼리 호출
-    }
-    
-    @Override
-    public int deleteNotice(int noid) throws Exception {
-    	 return sqlSession.delete("NoticeDao.deleteNotice", noid);
-    }
-    
-    @Override
-    public void updateNotice(Notice notice) throws Exception {
-        sqlSession.update("NoticeDao.updateNotice", notice);
-    }
-    
-    
-    @Override
-    public List<Notice> noticeListWithPaging(PageDTO pageDTO) throws Exception {
-        return sqlSession.selectList(NAMESPACE + ".noticeListWithPaging", pageDTO);
-    }
 
-    @Override
-    public int selectNoticeTotalCount(PageDTO pageDTO) throws Exception {
-        return sqlSession.selectOne(NAMESPACE + ".selectNoticeTotalCount", pageDTO);
-    }
+	@Override
+	public NoticeVO getNoticeById(int noid) {
+		return sqlSession.selectOne("NoticeDao.getNoticeById", noid);
+	}
+
+	@Override
+	public void insertNotice(NoticeVO notice) {
+		sqlSession.insert("NoticeDao.insertNotice", notice);
+	}
+
+	@Override
+	public int deleteNotice(int noid) {
+		return sqlSession.delete("NoticeDao.deleteNotice", noid);
+	}
+
+	@Override
+	public void updateNotice(NoticeVO notice) {
+		sqlSession.update("NoticeDao.updateNotice", notice);
+	}
+
+	@Override
+	public List<NoticeVO> noticeListWithPaging(PageDTO pageDTO) {
+		return sqlSession.selectList(NAMESPACE + ".noticeListWithPaging", pageDTO);
+	}
+
+	@Override
+	public int selectNoticeTotalCount(PageDTO pageDTO) {
+		return sqlSession.selectOne(NAMESPACE + ".selectNoticeTotalCount", pageDTO);
+	}
 
 }

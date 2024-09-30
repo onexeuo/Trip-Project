@@ -1,6 +1,7 @@
 @charset "utf-8";
 .wrapper{
   width:1200px;
+  width: 80%;
   margin: 0 auto;
   text-align: center;
 }
@@ -31,8 +32,11 @@
   text-align: center;
 }
 .wrapper .container .row2 .qnaCategories input{
-  height: 26px;
   text-align: center;
+}
+.wrapper .container .row2 .qnaCategories input[type='text']{
+	padding:0;
+	height:30px;
 }
 .wrapper .container .row2 .qnaCategories input[type='submit']{
   height:30px;

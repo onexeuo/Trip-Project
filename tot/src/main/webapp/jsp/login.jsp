@@ -11,18 +11,18 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login.css"/>
     
     <!-- 닉네임 입력 모달창 스크립트 -->
-   <script type="text/javascript">
-       function showModal() {
-           document.getElementById('nicknameModal').style.display = 'block';
-       }
-   
-       function closeModal() {
-           document.getElementById('nicknameModal').style.display = 'none';
-       }
-   
-       window.onload = function() {
-           
-           // 서버에서 전달된 loginSuccess 값이 제대로 전달됐는지 콘솔에 출력
+	<script type="text/javascript">
+	    function showModal() {
+	        document.getElementById('newNicknameModal').style.display = 'block';
+	    }
+	
+	    function closeModal() {
+	        document.getElementById('newNicknameModal').style.display = 'none';
+	    }
+	
+	    window.onload = function() {
+	        
+	        // 서버에서 전달된 loginSuccess 값이 제대로 전달됐는지 콘솔에 출력
             var loginSuccess = '<%= request.getAttribute("loginSuccess") %>';
 
             // loginSuccess가 true이면 모달창을 띄움
@@ -30,7 +30,7 @@
                 showModal();
             }
         };
-   </script>
+	</script>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -54,11 +54,11 @@
             </div>
         </div>
         <!-- 닉네임 입력 모달창 -->
-        <div id="nicknameModal" class="modal">
+        <div id="newNicknameModal" class="modal">
             <div class="modal-content">
                 <h3>닉네임을 입력하세요</h3>
                 
-                                <!-- 에러 메시지 출력 부분 -->
+				<!-- 에러 메시지 출력 부분 -->
                 <c:if test="${not empty errorMessage}">
                     <p style="color:red;">${errorMessage}</p>
                 </c:if>
@@ -72,6 +72,6 @@
             </div>
         </div>
     </main>
-   	<jsp:include page="footer.jsp"></jsp:include>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

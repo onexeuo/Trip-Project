@@ -11,12 +11,10 @@ public class RestaurantDTO {
 	private String restY; // Y 좌표
 
 	public RestaurantDTO() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public RestaurantDTO(int restId, String areacode, String restaurant001, String restName, String restAddress,
 			String restX, String restY) {
-		super();
 		this.restId = restId;
 		this.areacode = areacode;
 		this.restaurant001 = restaurant001;
@@ -88,7 +86,5 @@ public class RestaurantDTO {
 				+ ", restName=" + restName + ", restAddress=" + restAddress + ", restX=" + restX + ", restY=" + restY
 				+ "]";
 	}
-	
-	
 
 }

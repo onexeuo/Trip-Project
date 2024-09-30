@@ -1,6 +1,7 @@
 @charset "utf-8";
 .wrapper{
   width:1200px;
+  width:80%;
   margin: 0 auto;
   text-align: center;
 }
@@ -26,13 +27,17 @@
 }
 .wrapper .container .row2 .qnaCategories select{
   width:100px;
-  height:40px;
+  height:30px;
   font-size: 15px;
   text-align: center;
+  padding:0;
 }
 .wrapper .container .row2 .qnaCategories input{
-  height: 35px;
   text-align: center;
+}
+.wrapper .container .row2 .qnaCategories input[type='text']{
+	padding:0;
+	height:30px;
 }
 .wrapper .container .row2 .qnaCategories input[type='submit']{
   height:30px;
@@ -144,53 +149,41 @@
   width:30px;
   height:30px;
 }
+
+.paginationNav {
+    display: flex;
+    justify-content: center;  /* 가운데 정렬 */
+    align-items: center;
+    margin-top: 20px;
+}
+
 .paginationList {
-    list-style: none;
+    display: flex;  /* 페이징 번호들을 한 줄로 나열 */
+    list-style: none;  /* 리스트 스타일 제거 */
     padding: 0;
     margin: 0;
-    display: inline-flex;
-    gap: 5px;
 }
-.paginationNav{
-	margin-top:20px;
-}
-/* 각 페이지 항목 스타일 */
+
 .paginationItem {
-    display: inline;
+    margin: 0 5px;  /* 각 페이지 번호 사이에 간격 추가 */
 }
+
 .paginationLink {
-    display: inline-block;
     padding: 8px 12px;
     text-decoration: none;
-    color: #1fb1d9;
     border: 1px solid #ddd;
     border-radius: 4px;
-    background-color: #fff;
+    color: #333;
     font-weight: bold;
-    cursor:pointer;
 }
 
-/* 페이지 링크 호버 스타일 */
 .paginationLink:hover {
-    background-color: #f0f0f0;
-    border-color: #bbb;
+    background-color: #f0f0f0;  /* 마우스 오버 시 배경색 */
+    color: #000;
 }
 
-/* 현재 페이지 스타일 */
 .paginationItem.active .paginationLink {
-    background-color: #1fb1d9;
+    background-color: #007bff;
     color: #fff;
-    border-color: #1fb1d9;
-}
-
-/* 첫 번째 및 마지막 페이지 버튼 스타일 */
-.paginationItem a {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-/* 페이지 버튼 간격 */
-.paginationList li + li {
-    margin-left: 5px;
 }
 

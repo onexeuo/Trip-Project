@@ -1,37 +1,30 @@
 package tot.admin.service;
 
 import java.util.List;
-import java.util.Map;
 
 import tot.common.page.PageReqDTO;
 import tot.common.page.PageResDTO;
-import tot.domain.Qna;
-import tot.domain.QnaComment;
+import tot.domain.QnaCommentVO;
+import tot.domain.QnaDTO;
 
 public interface AdminQnaService {
-	
-	List<Qna> qnaList();
-	
-	public abstract Qna getQnaDetail(int QNAID);
-	
-	public abstract int insertQna(Qna qna);
-	
-	public abstract Qna getQna(int QNAID);
-	
-	public String getMemNickByMemId(String memId);
-	
-	PageResDTO<Qna> findQnaListWithPaging(PageReqDTO pageReqDTO) throws Exception;
-	
-	List<Qna> findQnaListWithPagingByMemId(PageReqDTO dto, String memId);  // 추가된 메소드
-	
-	List<Qna> findMyQnaList(String memId);	
-	
-	public abstract int insertQnaComment(QnaComment qnaComment);
-	
-	List<QnaComment> getCommentsByQnaId(int qnaId);
-	
-	public int updateQnaStatus(int qnaId, String newStatus);
-	
-//	public abstract Member getMemberId(int MEMID);
+
+	List<QnaDTO> qnaList();
+
+	QnaDTO getQnaDetail(int QNAID);
+
+	QnaDTO getQna(int QNAID);
+
+	PageResDTO<QnaDTO> findQnaListWithPaging(PageReqDTO pageReqDTO, int boardId);
+
+	List<QnaDTO> findQnaListWithPagingByMemId(PageReqDTO dto, String memId); // 추가된 메소드
+
+	List<QnaDTO> findMyQnaList(String memId);
+
+	int insertQnaComment(QnaCommentVO qnaComment);
+
+	List<QnaCommentVO> getCommentsByQnaId(int qnaId);
+
+	int updateQnaStatus(int qnaId, String newStatus);
 
 }

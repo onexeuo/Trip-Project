@@ -5,7 +5,6 @@ import static tot.common.Constants.PAGE_ADMIN_TREVIEW_REPORT;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,12 +25,15 @@ import tot.util.ResponseUtil;
 @RequestMapping("/admin/report/{boardId}")
 public class AdminReportController {
 
-	@Autowired
-	private AdminReportService adminReportService;
+	private final AdminReportService adminReportService;
+
+	public AdminReportController(AdminReportService adminReportService) {
+		this.adminReportService = adminReportService;
+	}
 
 	// 신고 관리 화면 이동
 	@GetMapping("/{page}")
-	public String showAdminReport(@PathVariable String boardId, @ModelAttribute PageReqDTO pageReqDTO, Model model) {
+	public String showAdminReport(@PathVariable int boardId, @ModelAttribute PageReqDTO pageReqDTO, Model model) {
 		PageResDTO<ReportDTO> pagination = adminReportService.findReportListWithPaging(pageReqDTO, boardId);
 
 		model.addAttribute("boardId", boardId);

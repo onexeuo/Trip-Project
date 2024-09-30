@@ -5,7 +5,11 @@ import java.util.List;
 import tot.domain.MemBanHistoryDTO;
 
 public interface MemBanHistoryService {
-	 public abstract void insertBanHistory(MemBanHistoryDTO banHistory);
-	 public abstract List<MemBanHistoryDTO> getBanHistoryByMemId(String memId);
-	 public abstract void updateLiftHistory(String id, String reason);
+
+	void insertBanHistory(MemBanHistoryDTO banHistory);
+
+	List<MemBanHistoryDTO> getBanHistoryByMemId(String memId);
+
+	void updateLiftHistory(String id, String reason);
+
 }

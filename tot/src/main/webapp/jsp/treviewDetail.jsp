@@ -15,6 +15,7 @@
     <title>여행 후기 상세</title>
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
     <div class="mainDiv">
         <div class="reviewTitleDiv">
             <div class="bigTitle">${review.trevTitle}</div>
@@ -39,7 +40,7 @@
         <div class="reviewCourseDiv">
             <!-- 여행 코스 이미지 -->
             <div class="reviewCourseImg">
-                <img src="https://via.placeholder.com/300x200" alt="Review Course Image">
+                <img src="${courses[0].regionImageUrl}" style="width: 300px; height: 200px; object-fit: cover; alt="Review Course Image">
                 <div class="initButton2">경로 상세보기 ></div>
             </div>
             <!-- 여행 코스 날짜별 내역 리스트 -->
@@ -277,5 +278,6 @@
 	    </div>
 	</div>
 	<!-- 신고 모달 폼 끝 -->
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/global.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/header.css"/>
     <script src="${pageContext.request.contextPath}/static/js/header.js"></script>
-    <script>
-    	var contextPath = "${pageContext.request.contextPath}";
-	</script>
 </head>
 
 <body>
@@ -27,9 +24,9 @@
                     <nav id="nav">
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/trip/list">PLANNER</a></li>
-                            <li><a href="${pageContext.request.contextPath}/qna/api">QNA</a></li>
-                            <li><a href="${pageContext.request.contextPath}/review/all/1">REVIEW</a></li>
-                            <li><a href="${pageContext.request.contextPath}/api/notices">NOTICE</a></li>
+                            <li><a href="${pageContext.request.contextPath}/qna/1/1">QNA</a></li>
+                            <li><a href="${pageContext.request.contextPath}/review/1/1">REVIEW</a></li>
+                            <li><a href="${pageContext.request.contextPath}/notice/1">NOTICE</a></li>
                         </ul>
                     </nav>
                 </div>

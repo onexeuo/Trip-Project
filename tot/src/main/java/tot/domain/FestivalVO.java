@@ -19,13 +19,11 @@ public class FestivalVO {
 	 private String usetimefestival;
 	 
 	 public FestivalVO() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public FestivalVO(String contentid, String contenttypeid, String areacode, String title, String addr1,
 			String addr2, String mapx, String mapy, String firstimage, String firstimage2, String eventstartdate,
 			String eventenddate, String tel, String overviewYN, String playtime, String usetimefestival) {
-		super();
 		this.contentid = contentid;
 		this.contenttypeid = contenttypeid;
 		this.areacode = areacode;

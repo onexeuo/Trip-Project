@@ -9,8 +9,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/recommendCourseInput.css">
     <script src="${pageContext.request.contextPath}/static/js/recommendCourseInput.js"></script>
+    <script>
+	// 뒤로가기 
+    function goBack() {
+        window.history.back();
+    }
+    </script>
 </head>
 <body>
+	<jsp:include page="/jsp/header.jsp"></jsp:include>
 	<div id="wrapper">
        <div class="title-group">
                <div class="title-container">
@@ -116,11 +123,12 @@
             </div>
 
             <div class="final-button-group">
-                <button type="button" class="back-button">뒤로가기</button>
+                <button type="button" class="back-button" onclick="goBack()">뒤로가기</button>
                 <button type="submit" class="submit-button">확인</button>
             </div>
         </form>
     </div>
    </div> 
+   <jsp:include page="/jsp/footer.jsp"></jsp:include>
 </body>
 </html>

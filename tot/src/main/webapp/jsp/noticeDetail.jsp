@@ -8,10 +8,9 @@
     <title>공지사항 상세보기</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/global.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/noticeDetail.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/noticeDetail.js"></script>
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
     <section class="container">   
         <h2 class="row1Text">NOTICE</h2> 
         <div class="fromHeaderParent">
@@ -25,18 +24,18 @@
             <div class="row2">
                 <div class="noticeTitle">
                     <b>제목</b>
-                    <p>${notice.notitle}</p> <!-- 공지사항 제목을 표시할 부분 -->
+                    <p>${notice.noTitle}</p>
                 </div>
                 <div class="noticeTitleContent">
                     <b>내용</b>
-                    <p>${notice.notext}</p> <!-- 공지사항 내용을 표시할 부분 -->
+                    <p>${notice.noText}</p>
                 </div>
             </div>
         </div>  
         <div class="buttons">
-            <button type="button" class="toListBtn" onclick="location.href='${pageContext.request.contextPath}/api/notices'">목록으로</button>
-            
+            <button type="button" class="toListBtn" onclick="location.href='${pageContext.request.contextPath}/notice/1'">목록으로</button>
         </div>
     </section>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

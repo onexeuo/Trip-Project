@@ -6,7 +6,6 @@ import static tot.common.Constants.PAGE_ADMIN_TREVIEW;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,21 +34,22 @@ import tot.util.ResponseUtil;
 @RequestMapping("/admin/review/{boardId}")
 public class AdminTReviewController {
 
-	@Autowired
-	private AdminTReviewService adminTreviewService;
+	private final AdminTReviewService adminTreviewService;
+	private final CourseService courseService;
+	private final AdminCommentService adminCommentService;
+	private final HistoryService historyService;
 
-	@Autowired
-	private CourseService courseService;
-
-	@Autowired
-	private AdminCommentService adminCommentService;
-
-	@Autowired
-	private HistoryService historyService;
+	public AdminTReviewController(AdminTReviewService adminTreviewService, CourseService courseService,
+			AdminCommentService adminCommentService, HistoryService historyService) {
+		this.adminTreviewService = adminTreviewService;
+		this.courseService = courseService;
+		this.adminCommentService = adminCommentService;
+		this.historyService = historyService;
+	}
 
 	// 게시물 관리 화면 이동
 	@GetMapping("/{page}")
-	public String showAdminTReview(@PathVariable String boardId, @ModelAttribute PageReqDTO pageReqDTO, Model model) {
+	public String showAdminTReview(@PathVariable int boardId, @ModelAttribute PageReqDTO pageReqDTO, Model model) {
 		PageResDTO<TReviewResDTO> pagination = adminTreviewService.findTReviewListWithPaging(pageReqDTO, boardId);
 
 		model.addAttribute("boardId", boardId);
@@ -68,14 +68,14 @@ public class AdminTReviewController {
 	}
 
 	// 게시물 상세 화면 이동
-	@GetMapping("/detail/{trevId}")
-	public String showTourReviewDetail(@PathVariable("boardId") String boardId, @PathVariable("trevId") int trevId,
-			Model model) {
+	@GetMapping("/detail/{trevId}/{page}")
+	public String showTourReviewDetail(@PathVariable("boardId") int boardId, @ModelAttribute PageReqDTO pageReqDTO,
+			@PathVariable("trevId") int trevId, Model model) {
 		MemberVO member = MemberUtil.getAuthenticatedMember();
 
 		TReviewResDTO review = adminTreviewService.getTReviewById(trevId);
 		List<CourseDTO> courses = courseService.getCourseDetailsByTripId(review.getTripId());
-		List<CommentVO> comments = adminCommentService.getCommentsByReviewId(trevId);
+		PageResDTO<CommentVO> comments = adminCommentService.findCommentListWithPaging(pageReqDTO, boardId, trevId);
 		List<HistoryVO> historys = historyService.getTReviewHistorysById(trevId);
 
 		model.addAttribute("boardId", boardId);

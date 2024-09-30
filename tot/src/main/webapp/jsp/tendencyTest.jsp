@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/tendencyTest.css" />
     <title>성향 분석</title>
 </head>
-	<jsp:include page="/jsp/header.jsp"></jsp:include>
 <body>
+	<jsp:include page="/jsp/header.jsp"></jsp:include>
     <h1 id="testTitle">성향 분석 설문</h1>
     <div id="questions">
         <div class="question active" id="question1">
@@ -89,7 +89,7 @@
     </div>
 
     <div id="result"></div>
-
+    <jsp:include page="/jsp/footer.jsp"></jsp:include>
     <script src="${pageContext.request.contextPath}/static/js/tendencyTest.js"></script>
 </body>
 </html>

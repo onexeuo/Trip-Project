@@ -1,65 +1,55 @@
-window.onload = function () {
-    const currentPage = 1;
-    const currentCategory = 'category';
-    const qna = [];
-    const qnaPage = 5;
-    
-    // 글쓰기 페이지로 이동
-    $('.toWrite').click(function(){
-        window.location.href="qnaRegist.jsp";
-		
-		//var memid = '<%= sessionScope.memid %>'; 
-        //window.location.href = '/insertQnaForm;
+//  URL 선언
+const URL = {
+    LOGIN_URL: '/tot/login',
+    BASE_QNA_URL: '/tot/qna/1/1',
+    MY_QNA_URL: '/tot/qna/2/1',
+    WRITE_QNA_URL: '/tot/qna/1/add'
+};
 
-		
-		fetch('/insertQnaForm', {
-			method : 'POST'
-		})
-		.then(response => {
-			if(!response.ok){
-				throw new Error('Network response was not ok.');
-			}
-			return response.json();
-		})
-		.then(data => {
-			console.log(data)
-		})
-		.catch(error => console.error('Error', error))
+$(document).ready(function () {
+
+    // 글쓰기 페이지로 이동
+    $('.toWrite').click(function () {
+        window.location.href = URL.WRITE_QNA_URL;
     });
 
-    fetch('/tot/qna/api')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok.');
-        }
-        return response.json(); // Parse the JSON data from the server
-    })
-    .then(data => {
-        $('#qnaTableBody').html('');
+    // 문의글 작성 취소한 경우
+    $('.cancelButton').click(function () {
+        window.location.href = URL.BASE_QNA_URL;
+    });
 
-        data.forEach(qna => {
-            let QnaLi = $(`
-                <tr id="qnaContent" data-id="${qna.qnaid}">
-                    <input type="hidden" name="qnaContent1" value="${qna.memid}"/>
-                    <td>${qna.qna_001}</td>
-                    <td>${qna.qnatitle}</td>
-                    <td>${qna.memid}</td>
-                    <td>${qna.qnaregdate}</td>
-                </tr>
-            `);
-            $('#qnaTableBody').append(QnaLi); 
+    // 문의글 등록하기 클릭한 경우
+    $('.registButton').on('click', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: URL.WRITE_QNA_URL,
+            type: 'POST',
+            data: $('form').serialize(),
+            success: function (response) {
+                alert(response.message);
+                window.location.href = URL.BASE_QNA_URL;
+            },
+            error: function (xhr) {
+                let errorResponse = JSON.parse(xhr.responseText);
+                alert(errorResponse.message);
+            }
         });
+    });
 
-        $('#qnaTableBody').on('click', '#qnaContent', function() {
-            const qnaid = $(this).data('id');
-            sessionStorage.setItem('qnaid', qnaid);
-            window.location.href = `qnaDetail.jsp?QNAID=${encodeURIComponent(qnaid)}`;
-        });
-    })
-    .catch(error => console.error('Error:', error)); 
+	// '전체 글 보기' 버튼 클릭 시
+    $('#totalQnaBtn').click(function () {
+        window.location.href = URL.BASE_QNA_URL;
+    });
+    
+    // '내 글 보기' 버튼 클릭 시
+    $('#myQnaBtn').click(function () {
+        window.location.href = URL.MY_QNA_URL;
+    });
+    
+    // '목록으로 이동' 버튼 클릭 시
+    $(".toListBtn").click(function() {
+        window.location.href = URL.BASE_QNA_URL;
+    });
 
-    if (window.location.pathname.endsWith('qnaDetail.jsp')) {
-        load();
-    } else {
-    }
-};
+});

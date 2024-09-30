@@ -10,6 +10,6 @@ public interface AdminReportService {
 
 	void updateReportStatus(String status, List<Integer> reportIds);
 
-	PageResDTO<ReportDTO> findReportListWithPaging(PageReqDTO dto, String boardId);
+	PageResDTO<ReportDTO> findReportListWithPaging(PageReqDTO dto, int boardId);
 
 }

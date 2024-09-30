@@ -13,7 +13,6 @@
     box-sizing: border-box; /* 모든 요소에 박스 사이징 적용 */
 }
 body {
-    text-align: center;
     background-color: #ffffff;
     min-width: 600px;
 }
@@ -27,9 +26,10 @@ body {
 }
 
 .result-container {
+    text-align: center;
     width: 90%;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 100px auto;
     padding: 20px;
     box-sizing: border-box;
 }

@@ -28,7 +28,6 @@
 	    </property>
 	</bean>
 	
-
     <!-- SqlSessionFactory Bean -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	    <property name="dataSource" ref="dataSource"/>
@@ -50,8 +49,6 @@
     </bean>
 
      <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
-
-
 
 </beans>
 

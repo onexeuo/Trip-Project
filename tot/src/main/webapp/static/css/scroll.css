@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+        body {
+            height: 200px; /* 페이지 높이 설정 */
+            overflow-x: hidden; /* 가로 스크롤 비활성화 */
+            margin: 0; /* 기본 마진 제거 */
+            position: relative; /* 자식 요소의 절대 위치를 기준으로 설정 */
+        }
+        .scroll-container {
+            width: 100%; /* 전체 너비 */
+            position: absolute; /* 스크롤 컨테이너를 고정 */
+            top: 0; /* 상단에 위치 */
+            height: 200px; /* 스크롤 높이 설정 */
+            overflow-y: scroll; /* 세로 스크롤 활성화 */
+            overflow-x: hidden; /* 가로 스크롤 비활성화 */
+            display:flex-block;
+        }
+        .container {
+            display: flex;
+            width: 600px; /* 전체 가로 너비 설정 */
+            height: 100px; /* 보이는 영역의 높이 설정 */
+            margin-top: 200px; /* 스크롤 아래로 이동 */
+            transition: transform 0.3s; /* 부드러운 전환 효과 */
+        }
+        .item {
+            width: 600px; /* 각 아이템의 너비 */
+            height: 100px; /* 각 아이템의 높이 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            border: 1px solid #000;
+        }

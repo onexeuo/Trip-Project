@@ -1,31 +1,30 @@
 package tot.domain;
 
 public class FestivalDTO {
-	 private String contentid;
-	 private String contenttypeid;
-	 private String areacode;
-	 private String title;
-	 private String addr1;
-	 private String addr2;
-	 private String mapx;
-	 private String mapy;
-	 private String firstimage;
-	 private String firstimage2;
-	 private String eventstartdate;
-	 private String eventenddate;
-	 private String tel;
-	 private String overviewYN;
-	 private String playtime;
-	 private String usetimefestival;
-	 
-	 public FestivalDTO() {
-		// TODO Auto-generated constructor stub
+
+	private String contentid;
+	private String contenttypeid;
+	private String areacode;
+	private String title;
+	private String addr1;
+	private String addr2;
+	private String mapx;
+	private String mapy;
+	private String firstimage;
+	private String firstimage2;
+	private String eventstartdate;
+	private String eventenddate;
+	private String tel;
+	private String overviewYN;
+	private String playtime;
+	private String usetimefestival;
+
+	public FestivalDTO() {
 	}
 
 	public FestivalDTO(String contentid, String contenttypeid, String areacode, String title, String addr1,
 			String addr2, String mapx, String mapy, String firstimage, String firstimage2, String eventstartdate,
 			String eventenddate, String tel, String overviewYN, String playtime, String usetimefestival) {
-		super();
 		this.contentid = contentid;
 		this.contenttypeid = contenttypeid;
 		this.areacode = areacode;
@@ -180,7 +179,5 @@ public class FestivalDTO {
 				+ ", eventenddate=" + eventenddate + ", tel=" + tel + ", overviewYN=" + overviewYN + ", playtime="
 				+ playtime + ", usetimefestival=" + usetimefestival + "]";
 	}
-	 
-	
-	 
+
 }

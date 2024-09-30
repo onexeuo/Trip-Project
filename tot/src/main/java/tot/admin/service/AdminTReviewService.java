@@ -8,7 +8,7 @@ import tot.domain.TReviewResDTO;
 
 public interface AdminTReviewService {
 
-	PageResDTO<TReviewResDTO> findTReviewListWithPaging(PageReqDTO dto, String boardId);
+	PageResDTO<TReviewResDTO> findTReviewListWithPaging(PageReqDTO dto, int boardId);
 
 	void updateTReviewStatus(String status, List<Integer> trevIds);
 

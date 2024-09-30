@@ -9,12 +9,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/tendencyTestResult.css">
     <script src="${pageContext.request.contextPath}/static/js/tendencyTestResult.js" defer></script>
 </head>
-<script>
-        const basePath = '${pageContext.request.contextPath}';
-</script>
 <body>
 	<jsp:include page="/jsp/header.jsp"></jsp:include>
     <div class="result-container">
+    	<input type="hidden" data-memId="member.memId" />
         <h1 id="testResultTitle">당신은 <span id="resultType"></span> 입니다.</h1>
         <img id="resultImage" src="" alt="Result Image" class="result-image">
         <p id="resultDescription" class="result-description">
@@ -25,5 +23,6 @@
             내 성향에 맞는 여행지 추천 받기<button class="go-button" onclick="getRecommendation()">GO!</button>
         </div>
     </div>
+    <jsp:include page="/jsp/footer.jsp"></jsp:include>
 </body>
 </html>

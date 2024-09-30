@@ -39,6 +39,7 @@
 #main #main1 #mainFirst #mainFirstBtn{
     margin-top:80px;
 }
+
 #main #main1 #mainFirst #mainFirstBtn input{
     padding:10px 50px;
     font-size:20px;
@@ -60,7 +61,7 @@
 	width:80%;
 	height:600px;
 	/*background: linear-gradient(to right, #ECFBFF, #1FB1D9);*/
-    background: url(../image/airplane.jpg) no-repeat center/cover;
+    background: url(../image/airplane.jpg) no-repeat center/cover ;
     margin:50px auto;
     box-sizing:border-box;
     position:relative;
@@ -93,7 +94,6 @@
 #main #main3{
 	width:75%;
 	margin:150px auto 100px;
-    overflow:auto;
 	/*background: linear-gradient(to bottom, #ECFBFF, #1FB1D9);*/
 }
 #main #main3 h2{
@@ -129,7 +129,6 @@
 	width:100%;
 	max-width:100%;
 	height:auto;
-	max-height:800px;
     justify-content: flex-end;
 }
 
@@ -140,9 +139,6 @@
 	margin:150px auto 100px;
 	background-color:pink;
 }
-
-
-
 
 
 /* 모달 배경 - 전체 화면을 덮도록 설정 */
@@ -166,18 +162,15 @@
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    width: 480px; /* 모달의 너비 */
+    width: 400px; /* 모달의 너비 */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
 }
 
-#testModal .modal-content h2{
-	margin-bottom:10px;
-}
 /* 닫기 버튼 (X) */
 #testModal .close {
     position: absolute;
-    top: 14px;
+    top: 10px;
     right: 20px;
     font-size: 24px;
     font-weight: bold;
