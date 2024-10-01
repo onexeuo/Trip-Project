@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD MyBatis Configuration 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    
+    <properties resource="props/db.properties" />
+    
+    <settings>
+        <setting name="jdbcTypeForNull" value="VARCHAR"/>
+    </settings>  
+    
+	<typeAliases>
+        <typeAlias type="tot.common.page.PageDTO" alias="PageDTO"/>
+		<typeAlias type="tot.common.page.PageReqDTO" alias="PageReqDTO"/>
+		<typeAlias type="tot.common.page.PageResDTO" alias="PageResDTO"/>
+        <package name="tot.domain"/>
+    </typeAliases>
+
+	<mappers>
+	    <mapper resource="conf/mapper/TendencyTestMapper.xml"/>
+	    <mapper resource="conf/mapper/PlannerMapper.xml"/>
+	    <mapper resource="conf/mapper/HotelMapper.xml"/>
+	    <mapper resource="conf/mapper/CourseMapper.xml"/>
+	    <mapper resource="conf/mapper/TripMapper.xml"/>
+	    <mapper resource="conf/mapper/FestivalMapper.xml"/>
+	    <mapper resource="conf/mapper/MemberMapper.xml"/>
+	    <mapper resource="conf/mapper/NoticeMapper.xml"/>
+	    <mapper resource="conf/mapper/MemBanHistory.xml"/>
+	    <mapper resource="conf/mapper/TReviewMapper.xml"/>
+        <mapper resource="conf/mapper/TourMapper.xml"/>
+        <mapper resource="conf/mapper/CommentMapper.xml"/>
+        <mapper resource="conf/mapper/HistoryMapper.xml"/>
+        <mapper resource="conf/mapper/QnaMapper.xml"/>
+        <mapper resource="conf/mapper/AdminTReviewMapper.xml"/>
+        <mapper resource="conf/mapper/AdminCommentMapper.xml"/>
+        <mapper resource="conf/mapper/AdminReportMapper.xml"/>
+        <mapper resource="conf/mapper/AdminQnaMapper.xml"/>
+	</mappers>
+
+</configuration>

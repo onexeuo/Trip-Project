@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tot.admin.dao.AdminReportDao">
+
+	<update id="updateReportStatus">
+		UPDATE REPORT
+	    SET REPORTSTATUS = #{status}, 
+	        PROCESSDATE = CURRENT_TIMESTAMP
+	    WHERE REPORTID IN 
+	    <foreach item="id" collection="reportIds" open="(" separator="," close=")">
+	        #{id}
+	    </foreach>
+	</update>
+	
+	<select id="selectTotalReportCount" parameterType="PageDTO"
+		resultType="int">
+		SELECT COUNT(DISTINCT r.REPORTID) AS total_count
+	    FROM REPORT r
+	    LEFT JOIN TReview tr ON r.REPORTEDTREVID = tr.TREVID
+	    LEFT JOIN TReviewComment tc ON r.REPORTEDTREVCID = tc.TREVCID
+	    LEFT JOIN MEMBER m ON r.REPORTERID = m.MEMID
+	    WHERE 1=1
+	    
+	    <choose>
+			<when test="boardId == 1">
+				AND r.REPORTSTATUS IN ('RECEIVED', 'INPROGRESS')
+			</when>
+			<when test="boardId == 2">
+				AND r.REPORTSTATUS IN ('COMPLETED', 'REJECTED')
+			</when>
+		</choose>
+
+		<if test="dto.search != null and dto.search != ''">
+			<choose>
+				<when test="dto.searchType.name() == 'POST'">
+					AND tr.TREVTITLE LIKE '%' || #{dto.search} || '%'
+				</when>
+				<when test="dto.searchType.name() == 'MEMBER'">
+					AND m.MEMNICK LIKE '%' || #{dto.search} || '%'
+				</when>
+				<when test="dto.searchType.name() == 'COMMENT'">
+					AND tc.TREVCTEXT LIKE '%' || #{dto.search} || '%'
+				</when>
+				<when test="dto.searchType.name() == 'ALL'">
+					AND (tr.TREVTITLE LIKE '%' || #{dto.search} || '%'
+					OR m.MEMNICK LIKE '%' || #{dto.search} || '%'
+					OR tc.TREVCTEXT LIKE '%' || #{dto.search} || '%')
+				</when>
+			</choose>
+		</if>
+	</select>
+	
+	<select id="findReportListWithPaging" parameterType="PageDTO" resultMap="ReportDTOMap">
+	    SELECT *
+	    FROM (
+	        SELECT 
+	        	r.REPORTID,
+	        	r.REPORTERID,
+	        	r.REPORTEDTREVID, 
+	        	r.REPORTEDTREVCID, 
+	        	r.REPORTEDCONTENTTYPE, 
+	        	r.REPORTREASON, 
+	        	r.REPORTDATE, 
+	        	r.PROCESSDATE, 
+	        	r.REPORTSTATUS,
+	        	tr.TREVTITLE AS postTitle,
+	        	tc.TREVCTEXT AS commentContent,
+            	m.MEMNICK AS reporterNickName,
+            	
+	            ROW_NUMBER() OVER(
+                   ORDER BY 
+                   <choose>
+	                   <when test="dto.sortType.name() == 'LATEST'">r.REPORTDATE DESC</when>
+	                   <when test="dto.sortType.name() == 'OLDEST'">r.REPORTDATE ASC</when>
+	                   <otherwise>r.TREVCREGDATE DESC</otherwise>
+                   </choose>
+               ) AS rn
+	        FROM REPORT r
+	        
+	        LEFT JOIN TReview tr ON r.REPORTEDTREVID = tr.TREVID
+	        LEFT JOIN TReviewComment tc ON r.REPORTEDTREVCID = tc.TREVCID
+	        LEFT JOIN MEMBER m ON r.REPORTERID = m.MEMID
+        
+	        WHERE 1=1
+	        
+	        <choose>
+				<when test="boardId == 1">
+					AND r.REPORTSTATUS IN ('RECEIVED', 'INPROGRESS')
+				</when>
+				<when test="boardId == 2">
+					AND r.REPORTSTATUS IN ('COMPLETED', 'REJECTED')
+				</when>
+			</choose>
+	
+			<if test="dto.search != null and dto.search != ''">
+				<choose>
+					<when test="dto.searchType.name() == 'POST'">
+						AND tr.TREVTITLE LIKE '%' || #{dto.search} || '%'
+					</when>
+					<when test="dto.searchType.name() == 'MEMBER'">
+						AND m.MEMNICK LIKE '%' || #{dto.search} || '%'
+					</when>
+					<when test="dto.searchType.name() == 'COMMENT'">
+						AND tc.TREVCTEXT LIKE '%' || #{dto.search} || '%'
+					</when>
+					<when test="dto.searchType.name() == 'ALL'">
+						AND (tr.TREVTITLE LIKE '%' || #{dto.search} || '%'
+						OR m.MEMNICK LIKE '%' || #{dto.search} || '%'
+						OR tc.TREVCTEXT LIKE '%' || #{dto.search} || '%')
+					</when>
+				</choose>
+			</if>
+	    ) c
+	    WHERE rn BETWEEN #{offset} + 1 AND #{offset} + #{pageRowCount}
+	</select>
+	
+	<resultMap id="ReportDTOMap" type="ReportDTO">
+        <id property="reportId" column="REPORTID"/>
+        <result property="reporterId" column="REPORTERID"/>
+        <result property="reportedTrevId" column="REPORTEDTREVID"/>
+        <result property="reportedTrevcId" column="REPORTEDTREVCID"/>
+        <result property="reportedContentType" column="REPORTEDCONTENTTYPE"/>
+        <result property="reportReason" column="REPORTREASON"/> 
+        <result property="reportDate" column="REPORTDATE"/>
+        <result property="processDate" column="PROCESSDATE"/>
+        <result property="reportStatus" column="REPORTSTATUS"/>
+        <result property="postTitle" column="postTitle"/>
+	    <result property="commentContent" column="commentContent"/>
+	    <result property="reporterNickName" column="reporterNickName"/>
+    </resultMap>
+
+</mapper>

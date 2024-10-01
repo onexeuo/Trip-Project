@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tot.dao.CommentDao">
+
+    <select id="getCommentsByReviewId" parameterType="int" resultMap="CommentVOMap">
+		SELECT
+            TREVCID,
+            TREVID,
+            TOPPARENTID,
+            PARENTID,
+            PARENTNICKNAME,
+            MEMID,
+            MEMNICK,
+            COMMENTSTATUS,
+            TREVCTEXT,
+            TREVDEPTH,
+            TREVCREGDATE,
+            TREVDUPDATE
+		FROM
+		    TREVIEWCOMMENT
+		WHERE
+		    TREVID = #{trevId}
+		AND
+			COMMENTSTATUS IN ('CMT001', 'CMT003')
+		START WITH
+		    TREVCID = TOPPARENTID      
+		CONNECT BY
+		    PRIOR TREVCID = PARENTID    
+		ORDER SIBLINGS BY
+		    TREVCREGDATE ASC     
+    </select>
+    
+    <select id="getCommentById" parameterType="int" resultMap="CommentVOMap">
+	    SELECT
+ 	        TREVCID,
+	        TREVID,
+	        TOPPARENTID,
+	        PARENTID,
+	        PARENTNICKNAME,
+	        MEMID,
+	        MEMNICK,
+	        COMMENTSTATUS,
+	        TREVCTEXT,
+	        TREVDEPTH,
+	        TREVCREGDATE,
+	        TREVDUPDATE
+	    FROM 
+	        TREVIEWCOMMENT
+	    WHERE 
+	        TREVCID = #{commentId}
+	</select>  
+    
+    <insert id="insertComment" parameterType="CommentVO" useGeneratedKeys="true" keyProperty="commentId">
+    <selectKey keyProperty="commentId" resultType="int" order="BEFORE">
+		SELECT SEQ_TREVCID.NEXTVAL FROM dual
+	</selectKey>
+	    INSERT INTO TREVIEWCOMMENT (
+            TREVCID,
+            TREVID,
+            TOPPARENTID,
+            PARENTID,
+            PARENTNICKNAME,
+            MEMID,
+            MEMNICK,
+            TREVCTEXT,
+            TREVDEPTH,
+            TREVCREGDATE
+        )
+        VALUES (
+            #{commentId},
+            #{postId},
+            #{topParentId},
+            #{parentId},
+            #{parentNickname},
+            #{memId},
+            #{memNick},
+            #{content},
+            #{depth},
+            CURRENT_TIMESTAMP
+        )
+    </insert>
+    
+    <update id="updateTopParentId" parameterType="int">
+	    UPDATE TREVIEWCOMMENT
+	    SET TOPPARENTID = #{commentId}
+	    WHERE TREVCID = #{commentId}
+	</update>
+	
+	<update id="editComment">
+		UPDATE TREVIEWCOMMENT
+		SET TREVCTEXT = #{content}, TREVDUPDATE = sysdate
+		WHERE TREVCID = #{commentId}
+	</update>
+	
+	<update id="deleteComment" parameterType="int">
+		UPDATE TREVIEWCOMMENT
+    	SET COMMENTSTATUS = 'CMT002', TREVDUPDATE = sysdate
+		WHERE TREVCID IN (
+		    SELECT TREVCID
+		    FROM (
+		        SELECT TREVCID
+		        FROM TREVIEWCOMMENT
+		        START WITH TREVCID = #{commentId}
+		        CONNECT BY PRIOR TREVCID = PARENTID
+		    )
+		)
+	</update>
+	
+	<update id="updateCommentStatus" parameterType="int">
+		UPDATE TREVIEWCOMMENT
+		SET COMMENTSTATUS = 'CMT003'
+		WHERE TREVCID = #{commentId}
+	</update>
+	
+	<insert id="insertReportComment" parameterType="ReportVO">
+		INSERT INTO REPORT(
+			REPORTID,
+			REPORTERID,
+			REPORTEDTREVCID,
+			REPORTEDCONTENTTYPE,
+			REPORTREASON,
+			REPORTDATE,
+			REPORTSTATUS
+		)
+		VALUES(
+			SEQ_REPORTID.NEXTVAL,
+			#{reporterId},
+			#{reportedTrevcId},
+			#{reportedContentType},
+			#{reportReason},
+			CURRENT_TIMESTAMP,
+			#{reportStatus}
+		)
+	</insert>
+	
+	<select id="getUpdateDate" parameterType="int" resultType="String">
+		SELECT TO_CHAR(TREVDUPDATE, 'YYYY-MM-DD HH24:MI') AS updatedDate
+	    FROM TREVIEWCOMMENT
+	    WHERE TREVCID = #{commentId}
+	</select>
+	
+	<resultMap id="CommentVOMap" type="CommentVO">
+        <id property="commentId" column="TREVCID"/>
+        <result property="postId" column="TREVID"/>
+        <result property="topParentId" column="TOPPARENTID"/>
+        <result property="parentId" column="PARENTID"/>
+        <result property="parentNickname" column="PARENTNICKNAME"/>
+        <result property="memId" column="MEMID"/> 
+        <result property="memNick" column="MEMNICK"/>
+        <result property="content" column="TREVCTEXT"/>
+        <result property="depth" column="TREVDEPTH"/>
+        <result property="status" column="COMMENTSTATUS"/>          
+        <result property="regDate" column="TREVCREGDATE"/>    
+        <result property="update" column="TREVDUPDATE"/>      
+    </resultMap>
+
+</mapper>
